@@ -1,0 +1,101 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"                    
+                    xmlns:local="clr-namespace:UpdateTracker">
+    
+    <Style TargetType="ListView">
+        <Setter Property="Grid.Row" Value="1"></Setter>
+        <Setter Property="Padding" Value="10"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="BorderThickness" Value="0 0 0 0"/>
+                    <Setter Property="Padding" Value="0"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="Margin" Value="0"/>
+                    <Setter Property="FontSize" Value="12"/>
+                </Style>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Grid Width="700" VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Margin" Value="5, 0"/>
+                                <Setter Property="Foreground" Value="#141c32"/>
+                            </Style>
+                            <Style TargetType="Border">
+                                <Setter Property="BorderThickness" Value="1"/>
+                                <Setter Property="BorderBrush" Value="White" />
+                                <Setter Property="Padding" Value="5"/>
+                            </Style>
+                        </Grid.Resources>
+                        <Border Grid.Column="0" >
+                            <TextBlock Text="{Binding Path=Name}"/>
+                        </Border>
+                        <Border Grid.Column="1" >
+                            <TextBlock Text="{Binding Path=Price}"/>
+                        </Border>
+                        <Border Grid.Column="2" >
+                            <TextBlock Text="{Binding Date, StringFormat={}{0:MM/dd/yyyy HH:mm:ss}}"/>
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid HorizontalAlignment="Left">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Width="700" VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Margin" Value="5,0" />
+                                    <Setter Property="Foreground" Value="White" />
+                                    <Setter Property="FontWeight" Value="Bold" />
+                                </Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Padding" Value="5"/>
+                                    <Setter Property="BorderThickness" Value="1" />
+                                    <Setter Property="BorderBrush" Value="LightGray" />
+                                    <Setter Property="Background" Value="#454545" />
+                                    <Setter Property="Padding" Value="5"/>
+                                </Style>
+                            </Grid.Resources>
+                            <Border Grid.Column="0">
+                                <TextBlock>Название</TextBlock>
+                            </Border>
+                            <Border Grid.Column="1">
+                                <TextBlock >Цена</TextBlock>
+                            </Border>
+                            <Border Grid.Column="2">
+                                <TextBlock >Дата старта продажи</TextBlock>
+                            </Border>
+                        </Grid>
+                        <ItemsPresenter Grid.Row="1"></ItemsPresenter>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
