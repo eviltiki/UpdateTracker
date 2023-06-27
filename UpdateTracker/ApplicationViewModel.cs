@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -40,7 +41,7 @@ namespace UpdateTracker
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand cmd = new SqlCommand($"SELECT TOP 1 * FROM dbo.Product WHERE Date >= '{appStartTime}' ORDER BY Id DESC", connection);
+                SqlCommand cmd = new SqlCommand($"EXEC prGetTrackerTable '{appStartTime}'", connection);
 
                 connection.Open();
 
@@ -65,7 +66,7 @@ namespace UpdateTracker
 
                 }
             }
-            
+
             serviceBroker.StartListen();
         }
     }
